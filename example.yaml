@@ -1,0 +1,34 @@
+lumberjack::group:     'lumberjack'
+lumberjack::logdir:    '/apps/lumberjack/logs'
+lumberjack::setfacl:   true
+lumberjack::version:   '0.0.25'
+
+lumberjack::instances:
+  lumberjack1:
+    basedir:      '/apps/lumberjack1'
+    fields:
+      hostname:   %{hostname}
+    files:
+      - '/apps/tomcat1/logs/app1/app.log'
+    host:         'loghost1.domain.com'
+    logdir:       '/apps/lumberjack1/logs'
+    port:         '11100'
+    ssl_ca_path:  '/apps/lumberjack1/cert.pem'
+  lumberjack2:
+    basedir:      '/apps/lumberjack2'
+    files:
+      - '/var/log/squid/access.log'
+    host:         'loghost2.domain.com'
+    logdir:       '/apps/lumberjack2/logs'
+    ssl_ca_path:  '/apps/lumberjack2/cert.pem'
+    port:         '11100'
+
+or:
+
+lumberjack::instances:
+  lumberjack:
+    host:         'loghost.domain.com'
+    port:         '11100'
+    files:
+      - '/var/log/messages'
+      - '/var/log/secure'
