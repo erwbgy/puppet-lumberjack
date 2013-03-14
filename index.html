@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Puppet-lumberjack : Deploy a forrest of lumberjacks to harvest your logs" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Puppet-lumberjack</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/erwbgy/puppet-lumberjack">View on GitHub</a>
+
+          <h1 id="project_title">Puppet-lumberjack</h1>
+          <h2 id="project_tagline">Deploy a forrest of lumberjacks to harvest your logs</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/erwbgy/puppet-lumberjack/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/erwbgy/puppet-lumberjack/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>puppet-lumberjack</h1>
+
+<p>Puppet module to install Apache Tomcat and run instances as Runit services
+under one or more users.</p>
+
+<p>The recommended usage is to place the configuration is hiera and just:</p>
+
+<pre><code>include lumberjack
+</code></pre>
+
+<p>Example 1: hiera config with a single instance using defaults:</p>
+
+<pre><code>lumberjack::instances:
+  lumberjack:
+    files:
+      - '/var/log/messages'
+      - '/var/log/secure'
+    host: 'loghost.domain.com'
+    port: '11100'
+</code></pre>
+
+<p>Example 2: hiera config with multiple instances with defaults and instance values:</p>
+
+<pre><code>lumberjack::group:     'lumberjack'
+lumberjack::logdir:    '/apps/lumberjack/logs'
+lumberjack::setfacl:   true
+lumberjack::version:   '0.0.25'
+
+lumberjack::instances:
+  lumberjack1:
+    basedir:      '/apps/lumberjack1'
+    fields:
+      hostname:   %{hostname}
+    files:
+      - '/apps/tomcat1/logs/app1/app.log'
+    host:         'loghost1.domain.com'
+    logdir:       '/apps/lumberjack1/logs'
+    port:         '11100'
+    ssl_ca_path:  '/apps/lumberjack1/cert.pem'
+  lumberjack2:
+    basedir:      '/apps/lumberjack2'
+    files:
+      - '/var/log/squid/access.log'
+    host:         'loghost2.domain.com'
+    logdir:       '/apps/lumberjack2/logs'
+    port:         '11100'
+    ssl_ca_path:  '/apps/lumberjack2/cert.pem'
+</code></pre>
+
+<h2>lumberjack parameters</h2>
+
+<p><em>basedir</em>: The base runtime directory. Default: '/opt/lumberjack'</p>
+
+<p><em>down</em>: Whether or not Runit services are down by default.</p>
+
+<p><em>fields</em>: Key-value mappings added to every line.</p>
+
+<p><em>files</em>: The list of files to monitor. <strong>Required</strong></p>
+
+<p><em>host</em>: The hostname of the server to send lumberjack messages to. <strong>Required</strong></p>
+
+<p><em>group</em>: The runtime user''s primary group. Default: 'lumberjack',</p>
+
+<p><em>logdir</em>: The runtime log directory. Default: '/var/logs/lumberjack'</p>
+
+<p><em>port</em>: The port to connect to on the lumberjack server. <strong>Required</strong></p>
+
+<p><em>setfacl</em>: Whether or not to set file system ACLs on the specified files (and their directories) to enable the runtime user to read each file. Default: false</p>
+
+<p><em>ssl_ca_path</em>: The path to the file containing the server''s SSL certificate. Default: '$basedir/cert.pem'</p>
+
+<p><em>version</em>: The version of the lumberjack package to install (eg. '0.0.25'). Default: 'present'</p>
+
+<p><em>window_size</em>: The maximum number of outstanding messages to send before we will wait for an acknowledgement.</p>
+
+<h2>lumberjack::instance parameters</h2>
+
+<p><em>title</em>: The user the instance runs as</p>
+
+<p>Plus all of the parameters specified in 'lumberjack parameters' above.</p>
+
+<p>It usually makes sense to specify basedir, logdir and files.</p>
+
+<h2>Lumberjack packages</h2>
+
+<p>This module assumes that a package called 'lumberjack' is available through
+your normal package repository.  See <a href="https://github.com/jordansissel/lumberjack">https://github.com/jordansissel/lumberjack</a>
+for details of how build RPM and DEB packages.</p>
+
+<h2>Support</h2>
+
+<p>License: Apache License, Version 2.0</p>
+
+<p>GitHub URL: <a href="https://github.com/erwbgy/puppet-lumberjack">https://github.com/erwbgy/puppet-lumberjack</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Puppet-lumberjack maintained by <a href="https://github.com/erwbgy">erwbgy</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-37513727-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
