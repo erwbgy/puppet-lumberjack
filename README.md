@@ -54,9 +54,9 @@ Example 2: hiera config with multiple instances with defaults and instance value
 
 *files*: The list of files to monitor. **Required**
 
-*host*: The hostname of the server to send lumberjack messages to. **Required**
-
 *group*: The runtime user''s primary group. Default: 'lumberjack',
+
+*host*: The hostname of the server to send lumberjack messages to. (This can be a comma-separated list of hostnames.) **Required**
 
 *logdir*: The runtime log directory. Default: '/var/logs/lumberjack'
 

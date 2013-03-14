@@ -1,5 +1,5 @@
 name    'erwbgy-lumberjack'
-version '0.2.1'
+version '0.1.0'
 source 'https://github.com/erwbgy/puppet-lumberjack.git'
 author 'erwbgy'
 license 'Apache License, Version 2.0'

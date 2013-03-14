@@ -4,6 +4,7 @@ define lumberjack::instance (
   $fields           = $::lumberjack::bind_address,
   $files            = $::lumberjack::files,
   $group            = $::lumberjack::group,
+  $host             = $::lumberjack::host,
   $logdir           = $::lumberjack::logdir,
   $port             = $::lumberjack::port,
   $setfacl          = $::lumberjack::setfacl,
@@ -21,7 +22,7 @@ define lumberjack::instance (
     }
   }
 
-  lumberjack::service { "${user}-${product}":
+  lumberjack::service { "${user}-lumberjack":
     basedir      => $basedir,
     down         => $down,
     fields       => $fields,
