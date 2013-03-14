@@ -19,6 +19,7 @@ define lumberjack::service (
   else {
     $cert_path = "${basedir}/cert.pem"
   }
+  $product_dir = '/opt/lumberjack'
   include runit
   runit::service { "${user}-lumberjack":
     service     => 'lumberjack',

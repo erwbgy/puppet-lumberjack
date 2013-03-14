@@ -34,7 +34,7 @@ define lumberjack::instance (
     setfacl      => $setfacl,
     ssl_ca_path  => $ssl_ca_path,
     version      => $version,
-    window_size  => $version,
+    window_size  => $window_size,
     user         => $user,
   }
 }
