@@ -19,6 +19,7 @@ define lumberjack::service (
   else {
     $cert_path = "${basedir}/cert.pem"
   }
+  include runit
   runit::service { "${user}-lumberjack":
     service     => 'lumberjack',
     basedir     => $basedir,
@@ -34,7 +35,7 @@ define lumberjack::service (
     owner   => $user,
     group   => $group,
     content => template('lumberjack/run.erb'),
-    require => Runit::Service["${user}-lumberjack}"],
+    require => Runit::Service["${user}-lumberjack"],
   }
   file { "${basedir}/service/lumberjack":
     ensure  => link,

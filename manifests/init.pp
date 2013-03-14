@@ -1,9 +1,9 @@
 class lumberjack (
-  $files,
-  $host,
-  $port,
+  $files            = undef,
+  $host             = undef,
+  $port             = undef,
   $basedir          = '/opt/lumberjack',
-  $fields           = undef
+  $fields           = undef,
   $down             = false,
   $group            = 'lumberjack',
   $logdir           = '/var/log/lumberjack',

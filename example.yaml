@@ -1,5 +1,4 @@
 lumberjack::group:     'lumberjack'
-lumberjack::logdir:    '/apps/lumberjack/logs'
 lumberjack::setfacl:   true
 lumberjack::version:   '0.0.25'
 

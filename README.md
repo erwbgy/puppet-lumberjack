@@ -20,7 +20,6 @@ Example 1: hiera config with a single instance using defaults:
 Example 2: hiera config with multiple instances with defaults and instance values:
 
     lumberjack::group:     'lumberjack'
-    lumberjack::logdir:    '/apps/lumberjack/logs'
     lumberjack::setfacl:   true
     lumberjack::version:   '0.0.25'
     

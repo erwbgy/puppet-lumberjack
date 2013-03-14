@@ -2,8 +2,8 @@
 exec 2>&1
 export PATH=<%= @product_dir %>/bin:$PATH
 exec lumberjack.sh \
-<% @fields.each_pair |name, value| -%>
-  --field <%= #{name}=#{value} %> \
+<% @fields.each_pair do |field, value| -%>
+  --field <%= "#{field}=#{value}" %> \
 <% end -%>
 <% if @window_size -%>
   --window-size <%= @window_size %> \
@@ -11,7 +11,7 @@ exec lumberjack.sh \
   --ssl-ca-path <%= @cert_path %> \
   --host <%= @host %> \
   --port <%= @port %> \
-<% @files.each |filename| -%>
-  <%= #{filename} %> \
+<% @files.each do |filename| -%>
+  <%= filename %> \
 <% end %>
 
