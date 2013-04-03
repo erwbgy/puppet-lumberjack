@@ -12,7 +12,7 @@ lumberjack::instances:
     host:         'loghost1.domain.com'
     logdir:       '/apps/lumberjack1/logs'
     port:         '11100'
-    ssl_ca_path:  '/apps/lumberjack1/cert.pem'
+    ssl_ca_path:  'puppet:///files/lumberjack-cert.pem'
   lumberjack2:
     basedir:      '/apps/lumberjack2'
     files:

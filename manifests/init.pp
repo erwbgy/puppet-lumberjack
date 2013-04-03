@@ -8,7 +8,7 @@ class lumberjack (
   $group            = 'lumberjack',
   $logdir           = '/var/log/lumberjack',
   $setfacl          = false,
-  $ssl_ca_path      = undef,
+  $ssl_ca_path      = 'puppet:///files/lumberjack-cert.pem',
   $version          = 'present',
   $window_size      = undef,
 ) {

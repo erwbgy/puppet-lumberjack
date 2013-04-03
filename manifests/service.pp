@@ -13,11 +13,18 @@ define lumberjack::service (
   $window_size,
   $user,
 ) {
-  if $ssl_ca_path {
-    $cert_path = $ssl_ca_path
+  if $ssl_ca_path =~ /^puppet:/ {
+    file { "${basedir}/cert.pem":
+      ensure  => present,
+      mode    => '0444',
+      owner   => $user,
+      group   => $group,
+      source  => $ssl_ca_path,
+    }
+    $cert_path = "${basedir}/cert.pem"
   }
   else {
-    $cert_path = "${basedir}/cert.pem"
+    $cert_path = $ssl_ca_path
   }
   $product_dir = '/opt/lumberjack'
   include runit

@@ -33,7 +33,7 @@ Example 2: hiera config with multiple instances with defaults and instance value
         host:         'loghost1.domain.com'
         logdir:       '/apps/lumberjack1/logs'
         port:         '11100'
-        ssl_ca_path:  '/apps/lumberjack1/cert.pem'
+        ssl_ca_path:  'puppet:///files/lumberjack-cert.pem'
       lumberjack2:
         basedir:      '/apps/lumberjack2'
         files:
@@ -41,7 +41,7 @@ Example 2: hiera config with multiple instances with defaults and instance value
         host:         'loghost2.domain.com'
         logdir:       '/apps/lumberjack2/logs'
         port:         '11100'
-        ssl_ca_path:  '/apps/lumberjack2/cert.pem'
+        ssl_ca_path:  '/etc/pki/CA/certs/ca.pem'
 
 ## lumberjack parameters
 
@@ -63,7 +63,10 @@ Example 2: hiera config with multiple instances with defaults and instance value
 
 *setfacl*: Whether or not to set file system ACLs on the specified files (and their directories) to enable the runtime user to read each file. Default: false
 
-*ssl_ca_path*: The path to the file containing the server''s SSL certificate. Default: '$basedir/cert.pem'
+*ssl_ca_path*: The path to the file containing the server''s SSL certificate.
+If a Puppet filestore location starting with 'puppet:' is given then this file
+will be transferred to '$basedir/cert.pem' otherwise the value is assumed to be
+a path on the host. Default: 'puppet:///files/lumberjack-cert.pem'
 
 *version*: The version of the lumberjack package to install (eg. '0.0.25'). Default: 'present'
 
