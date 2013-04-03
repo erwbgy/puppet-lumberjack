@@ -1,7 +1,7 @@
 # puppet-lumberjack
 
-Puppet module to install Apache Tomcat and run instances as Runit services
-under one or more users.
+Puppet module to install Lumberjack and run instances as Runit services under
+one or more users.
 
 The recommended usage is to place the configuration is hiera and just:
 
