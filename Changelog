@@ -1,0 +1,5 @@
+0.2.0:
+
+* By default the SSL CA path is now a Puppet filestore location so we can
+transfer the file to the destination host.  Local paths can still be specified
+though.
