@@ -1,3 +1,7 @@
+# _Unmaintained_
+
+I no longer use Puppet actively and this software has not been maintained for some time.
+
 # puppet-lumberjack
 
 Puppet module to install Lumberjack and run instances as Runit services under
